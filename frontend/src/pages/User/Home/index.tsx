@@ -1,14 +1,29 @@
 import { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  OutlinedInput,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const Home = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleUpdate = () => {};
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
   const handleLogOut = () => {};
+  const handleUpdate = () => {};
   const handleDelete = () => {};
 
   return (
@@ -36,17 +51,23 @@ export const Home = () => {
           value={email}
           placeholder="informe seu email"
         />
-        <TextField
-          type="password"
+        <OutlinedInput
+          type={showPassword ? "text" : "password"}
           onChange={(event) => setPassword(event.target.value)}
           value={password}
-          placeholder="informe sua senha"
-        />
-        <TextField
-          type="password"
-          onChange={(event) => setPasswordConfirmation(event.target.value)}
-          value={passwordConfirmation}
-          placeholder="confirme sua senha"
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          placeholder="mude sua senha"
         />
         <Button
           sx={{ background: "#21eb4d", color: "#fff" }}
