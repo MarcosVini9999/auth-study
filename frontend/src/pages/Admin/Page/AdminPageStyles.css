@@ -1,0 +1,11 @@
+#list {
+  overflow-y: scroll;
+  height: 600px;
+  width: 300px;
+}
+
+.userCard {
+  border-style: groove;
+  padding: 10px;
+  margin: 5px;
+}

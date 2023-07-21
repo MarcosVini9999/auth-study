@@ -1,6 +1,8 @@
 import React from "react";
 import { createUser, login } from "../../../utils/user";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../../components/Button/Button";
+import { Input } from "../../../components";
 
 export const UserSignUp: React.FC = () => {
   const [name, setName] = React.useState("");
@@ -32,10 +34,10 @@ export const UserSignUp: React.FC = () => {
 
   return (
     <React.Fragment>
-      <input type="text" placeholder="Name" value={name} onChange={handleName} />
-      <input type="email" placeholder="Email" value={email} onChange={handleEmail} />
-      <input type="password" placeholder="Password" value={password} onChange={handlePassword} />
-      <button onClick={onSignUp}>Sign Up</button>
+      <Input type="text" placeholder="Name" value={name} onChange={handleName} />
+      <Input type="email" placeholder="Email" value={email} onChange={handleEmail} />
+      <Input type="password" placeholder="Password" value={password} onChange={handlePassword} />
+      <Button onClick={onSignUp}>Sign Up</Button>
     </React.Fragment>
   );
 };

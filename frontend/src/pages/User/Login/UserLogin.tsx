@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../../utils/user";
+import { Button } from "../../../components/Button/Button";
+import { Input } from "../../../components";
 
 export const UserLogin: React.FC = () => {
   const [email, setEmail] = React.useState("");
@@ -24,9 +26,9 @@ export const UserLogin: React.FC = () => {
 
   return (
     <React.Fragment>
-      <input type="text" placeholder="Email" onChange={handleEmail} />
-      <input type="text" placeholder="Password" onChange={handlePassword} />
-      <button onClick={handleLogin}>Login</button>
+      <Input type="text" placeholder="Email" onChange={handleEmail} />
+      <Input type="password" placeholder="Password" onChange={handlePassword} />
+      <Button onClick={handleLogin}>Login</Button>
     </React.Fragment>
   );
 };

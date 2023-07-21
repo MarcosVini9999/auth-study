@@ -1,6 +1,8 @@
 import React from "react";
-import { deleteUser, getUsers } from "../../../utils/user";
 import { iUser } from "../../../config/types";
+import { deleteUser, getUsers } from "../../../utils/user";
+import "./AdminPageStyles.css";
+import { Button } from "../../../components/Button/Button";
 
 export const AdminPage: React.FC = () => {
   const [users, setUsers] = React.useState<iUser[]>([]);
@@ -16,23 +18,25 @@ export const AdminPage: React.FC = () => {
 
   return (
     <React.Fragment>
-      {users.length
-        ? users.map((user) => (
-            <div key={user.id}>
-              <p>{user.id}</p>
-              <p>{user.name}</p>
-              <p>{user.email}</p>
-              <button
-                onClick={() => {
-                  deleteUser(user.id);
-                  setUsers(users.filter((u) => u.id !== user.id));
-                }}
-              >
-                delete
-              </button>
-            </div>
-          ))
-        : null}
+      <div id="list">
+        {users.length
+          ? users.map((user) => (
+              <div className="userCard" key={user.id}>
+                <p>ID: {user.id}</p>
+                <p>NOME: {user.name}</p>
+                <p>EMAIL: {user.email}</p>
+                <Button
+                  onClick={() => {
+                    deleteUser(user.id);
+                    setUsers(users.filter((u) => u.id !== user.id));
+                  }}
+                >
+                  delete
+                </Button>
+              </div>
+            ))
+          : null}
+      </div>
     </React.Fragment>
   );
 };

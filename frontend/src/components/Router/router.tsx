@@ -1,20 +1,14 @@
-import { UserSignUp, UserLogin, UserPage, AdminSignUp, AdminLogin, AdminPage } from "../../pages/";
 import React from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Layout } from "..";
 import { PrivateRoute } from "./privateRoute";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserSignUp, UserLogin, UserPage, AdminSignUp, AdminLogin, AdminPage } from "../../pages/";
 
 export const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <main>
-              <Outlet />
-            </main>
-          }
-        >
+        <Route path="/" element={<Layout />}>
           <Route path="" element={<UserLogin />} />
           <Route path="signup" element={<UserSignUp />} />
           <Route
@@ -26,14 +20,7 @@ export const Router: React.FC = () => {
             }
           />
         </Route>
-        <Route
-          path="admin"
-          element={
-            <main>
-              <Outlet />
-            </main>
-          }
-        >
+        <Route path="admin" element={<Layout />}>
           <Route path="" element={<AdminLogin />} />
           <Route path="signup" element={<AdminSignUp />} />
           <Route

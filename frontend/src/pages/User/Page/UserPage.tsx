@@ -1,6 +1,7 @@
 import React from "react";
 import { useDebounce } from "../../../hooks/useDebounce";
 import { login, updateUser } from "../../../utils/user";
+import { Input } from "../../../components";
 
 export const UserPage: React.FC = () => {
   const userData = JSON.parse(localStorage.getItem("chaveDeUsuário") || "{}");
@@ -33,11 +34,15 @@ export const UserPage: React.FC = () => {
   return (
     <React.Fragment>
       <p>Username:</p>
-      <input type="text" value={username} onChange={handleUsername} />
+      <Input type="text" value={username} onChange={handleUsername} />
       <p>Email:</p>
-      <input type="email" value={email} onChange={handleEmail} />
+      <Input type="email" value={email} onChange={handleEmail} />
       <p>Password:</p>
-      <input type="password" value={password} onChange={handlePassword} />
+      <Input type="password" value={password} onChange={handlePassword} />
+      <p>
+        <span style={{ fontWeight: "bold" }}>Note: </span>
+        changes are saved after you finish typing
+      </p>
     </React.Fragment>
   );
 };
