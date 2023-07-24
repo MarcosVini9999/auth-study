@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../../utils/user";
 import { Button } from "../../../components/Button/Button";
 import { Input } from "../../../components";
@@ -29,6 +29,11 @@ export const UserLogin: React.FC = () => {
       <Input type="text" placeholder="Email" onChange={handleEmail} />
       <Input type="password" placeholder="Password" onChange={handlePassword} />
       <Button onClick={handleLogin}>Login</Button>
+      <div>
+        <Link to="signup" style={{ color: "#5cceee" }}>
+          Don't have an account?
+        </Link>
+      </div>
     </React.Fragment>
   );
 };
